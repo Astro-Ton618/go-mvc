@@ -1,4 +1,4 @@
-{% func Home_style() %}
+{% func Index_style() %}
   * {
     padding: 0;
     margin: 0;

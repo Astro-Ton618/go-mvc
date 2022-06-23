@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"go_mvc/view/css"
 	"go_mvc/view/html"
+	"io/ioutil"
+	"log"
+	"path/filepath"
 
 	"github.com/valyala/fasthttp"
 )
@@ -11,15 +14,30 @@ import (
 func Router(ctx *fasthttp.RequestCtx) {
 	switch string(ctx.Path()) {
 	case "/":
-		ctx.SetContentType("text/html; charset=utf-8")
-		fmt.Fprintf(ctx, "%s", html.Home("go_mvc", "go_mvc"))
+		ctx.SetContentType("text/html")
+		html.WriteIndex(ctx, "Index")
 	case "/css":
-		ctx.SetContentType("text/css; charset=utf-8")
-		fmt.Fprintf(ctx, "%s", css.Home_style())
+		ctx.SetContentType("text/css")
+		css.WriteIndex_style(ctx)
+	case "/favicon.ico":
+		ctx.SetContentType("image/x-icon")
+		fmt.Fprintf(ctx, "%s", get_ico())
 	case "/robots.txt":
 		fmt.Fprintf(ctx, "user-agent: * allow: /")
 	default:
-		ctx.SetContentType("text/html; charset=utf-8")
-		fmt.Fprintf(ctx, "%s", html.Not_found("not_found", "not_found"))
+		ctx.SetContentType("text/html")
+		html.WriteIndex(ctx, "Not found")
 	}
+}
+
+func get_ico() string {
+	abs, err := filepath.Abs("./view/assets/favicon.ico")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	data, err := ioutil.ReadFile(abs)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return string(data)
 }
