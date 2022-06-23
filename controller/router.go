@@ -23,7 +23,8 @@ func Router(ctx *fasthttp.RequestCtx) {
 		ctx.SetContentType("image/x-icon")
 		fmt.Fprintf(ctx, "%s", get_ico())
 	case "/robots.txt":
-		fmt.Fprintf(ctx, "user-agent: * allow: /")
+		ctx.SetContentType("text/plain")
+		fmt.Fprintf(ctx, "%s", get_robots())
 	default:
 		ctx.SetContentType("text/html")
 		html.WriteIndex(ctx, "Not found")
@@ -32,6 +33,18 @@ func Router(ctx *fasthttp.RequestCtx) {
 
 func get_ico() string {
 	abs, err := filepath.Abs("./view/assets/favicon.ico")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	data, err := ioutil.ReadFile(abs)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return string(data)
+}
+
+func get_robots() string {
+	abs, err := filepath.Abs("./view/assets/robots.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}
