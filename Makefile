@@ -1,7 +1,7 @@
 .DEFAULT_GOAL: build
 
 compile_qtpl:
-	go run view/qtc/main.go || true
+	go run view/qtpl_compiler/main.go || true
 .PHONY: complie_qtpl
 
 run: compile_qtpl
