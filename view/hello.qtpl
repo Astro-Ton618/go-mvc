@@ -1,7 +1,14 @@
-All text outside function templates is treated as comments,
-i.e. it is just ignored by quicktemplate compiler (`qtc`). It is for humans.
-
-Hello is a simple template function.
-{% func Hello(name string) %}
-	Hello, {%s name %}!
+{% func Home(meta_description string, title string) %}
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="{%s meta_description %}">
+      <title>{%s title %}</title>
+    </head>
+    <body>
+      <h2>{%s title %}</h2>
+    </body>
+  </html>
 {% endfunc %}
