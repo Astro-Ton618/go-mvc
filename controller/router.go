@@ -2,8 +2,8 @@ package controller
 
 import (
 	"fmt"
-	"go_mvc/view/css"
-	"go_mvc/view/html"
+	"go-mvc/view/css"
+	"go-mvc/view/html"
 	"io/ioutil"
 	"log"
 	"path/filepath"

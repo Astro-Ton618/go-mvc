@@ -26,7 +26,7 @@ func StreamIndex(qw422016 *qt422016.Writer, body string) {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="go_mvc">
+    <meta name="description" content="go-mvc">
     <link 
       rel="preload" 
       href="/css" 
@@ -39,7 +39,7 @@ func StreamIndex(qw422016 *qt422016.Writer, body string) {
     <noscript>
       <link rel="stylesheet" href="/css">
     </noscript>
-    <title>go_mvc</title>
+    <title>go-mvc</title>
   </head>
   <body>
     `)

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go_mvc/controller"
+	"go-mvc/controller"
 	"log"
 
 	"github.com/valyala/fasthttp"

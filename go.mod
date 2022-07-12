@@ -1,4 +1,4 @@
-module go_mvc
+module go-mvc
 
 go 1.18
 
